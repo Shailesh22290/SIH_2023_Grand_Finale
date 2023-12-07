@@ -161,7 +161,7 @@ body {
         }
        
         .navbar-scrolled{
-          background-color: #1d398e ;
+          background-color:orange ;
           box-shadow:0 3px 10px rgba(0,0,0,0.15);
         }
       
@@ -1358,8 +1358,8 @@ p.phonenumber{
 
 /* FOOTER CSS */
 :root {
-  --footer-background-color: #1d398e;
-  --footer-background-color: #1d398e;
+  --footer-background-color:orange;
+  --footer-background-color:orange;
   --footer-text-color: #ffffff;
 }
 
