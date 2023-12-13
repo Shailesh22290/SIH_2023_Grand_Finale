@@ -26,13 +26,13 @@ function genderratio(arrays) {
     let f = 0;
     let s = 0;
     arrays.forEach((row, i) => {
-        if (arrays[i][9] == "m\r") {
+        if (arrays[i][9] == "m") {
             m += 1;
         }
-        if (arrays[i][9] == "f\r") {
+        if (arrays[i][9] == "f") {
             f += 1;
         }
-        if (arrays[i][9] == "t\r") {
+        if (arrays[i][9] == "t") {
             s += 1;
         }
 
