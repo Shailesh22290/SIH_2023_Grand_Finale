@@ -1,7 +1,7 @@
 
 let r = []
 //         tutorial link : https://www.youtube.com/watch?v=gnqHNJNc_0A
-onload = fetch("jobs.csv").then(res => {
+onload = fetch("prices.csv").then(res => {
     return res.text()
 }).then(data => {
     let s = data.split("\n");
