@@ -1,7 +1,7 @@
 
 let r = []
 //         tutorial link : https://www.youtube.com/watch?v=gnqHNJNc_0A
-onload = fetch("prices.csv").then(res => {
+onload = fetch("./prices.csv").then(res => {
     return res.text()
 }).then(data => {
     let s = data.split("\n");
@@ -24,30 +24,23 @@ onload = fetch("prices.csv").then(res => {
 function genderratio(arrays) {
     let m = 0;
     let f = 0;
-    let s = 0;
     arrays.forEach((row, i) => {
-        if (arrays[i][9] == "m") {
+        if (arrays[i][2] == "m\r") {
             m += 1;
         }
-        if (arrays[i][9] == "f") {
+        if (arrays[i][2] == "f\r") {
             f += 1;
         }
-        if (arrays[i][9] == "t") {
-            s += 1;
-        }
-
     })
-    console.log(m, f, s);
-    // console.log(i);
-    return [m, f,s];
+    console.log(m, f);
+    return [m, f];
 }
 function piechartgen(gen) {
-    var xValues = ['Male', 'Female','Others'];
+    var xValues = ['Male', 'Female'];
     var yValues = gen;
     var barColors = [
         "#b91d47",
-        "#00aba9",
-        "#2b5797"
+        "#00aba9"
     ];
 
     new Chart("myChart", {
