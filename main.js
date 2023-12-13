@@ -24,11 +24,14 @@ mobile_nav.addEventListener("click", () => toggleNavbar());
 
  const header = document.querySelector('.header');
  const  register = document.querySelector(".register");
+ const  login = document.querySelector(".login");
  window.addEventListener('scroll', () => {
    if (window.scrollY >= 56) {
     register.style.backgroundColor = '#4CAF50'; // Change to a different color on scroll
+    login.style.backgroundColor = '#4CAF50'; // Change to a different color on scroll
    } else {
     register.style.backgroundColor = '#1d398e'; // Change back to the original color when scrolled back up
+    login.style.backgroundColor = '#1d398e'; // Change back to the original color when scrolled back up
    }
  });
 
@@ -131,3 +134,42 @@ var scrollTopAnimated = function (speed) {
     speed && (stepAmount = (topOffset * stepTime)/speed);
     scrollAnimationStep(topOffset, stepAmount);
 };
+
+
+////job search
+
+function searchJobs() {
+  // Get form data
+  const jobType = document.getElementById('jobType').value;
+  const qualification = document.getElementById('qualification').value;
+  const experience = document.getElementById('experience').value;
+  const placeOfPosting = document.getElementById('placeOfPosting').value;
+  const jobTitleOrOrg = document.getElementById('jobTitleOrOrg').value;
+
+  // Perform the search logic here (you can replace this with your actual search implementation)
+  const results = `Job Type: ${jobType}<br>
+                  Qualification: ${qualification}<br>
+                  Experience: ${experience} years<br>
+                  Place Of Posting: ${placeOfPosting}<br>
+                  Job Title or Organization Name: ${jobTitleOrOrg}`;
+
+  // Display the results
+  document.getElementById('results').innerHTML = results;
+
+}
+ //// boxes
+  // Function to set content for each box
+  function setBoxContent(boxId, number, text) {
+    const box = document.getElementById(boxId);
+    box.innerHTML = `<h2>${number}</h2><p>${text}</p>`;
+  }
+
+  // Set content for each box
+  setBoxContent('box1', 1, 'First Box');
+  setBoxContent('box2', 2, 'Second Box');
+  setBoxContent('box3', 3, 'Third Box');
+  setBoxContent('box4', 4, 'Fourth Box');
+  setBoxContent('box5', 5, 'Fifth Box');
+  setBoxContent('box6', 6, 'Sixth Box');
+  setBoxContent('box7', 7, 'Seventh Box');
+  setBoxContent('box8', 8, 'Eighth Box');

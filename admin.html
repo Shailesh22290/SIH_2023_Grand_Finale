@@ -202,11 +202,11 @@
     </div>
 <div>
     <div id="login-container">
-        <h1>User Login</h1>
+        <h1>Admin Login</h1>
         <img id="logo" src="logo.png" height="100px" alt="Logo">
         <div class="input-group">
-            <label for="username" >Phone Number</label>
-            <input type="email" id="username" class="input-field"  placeholder="+91 1112223333">
+            <label for="username" >Username</label>
+            <input type="email" id="username" class="input-field"  placeholder="user">
         </div>
 
         <div class="input-group">
@@ -219,9 +219,9 @@
             <input type="submit" value="Login" class="btn" id="loginBtn">
             <p id="loginResult"></p>
         </div>
-        <div>
+       <!-- <div>
             <p>Don't have a account <a  class="register" href="Register.html">Register</a></p>
-        </div>
+        </div>---->
         <div class="forgot">
             <p> <a href="Register.html">Forgot password</a></p>
         </div>
@@ -230,24 +230,41 @@
    
     <div class="button-container">
         <button><a href="Index.html"><i class="fa-solid fa-circle-arrow-left"></i>Back</a></button>
-        <button><a  href="admin.html"><i class="fa-solid fa-user"></i>Administrator </a></button>
+        <button><a  href="student.html"><i class="fa-solid fa-user"></i>User </a></button>
         <button><a  href="company.html"><i class="fa-solid fa-briefcase"></i>Company</a></button>
        <!---- <button><a href="Coordinator.html"><i class="fa-solid fa-cube"></i>Coordinator</a></button>
         <button><a  href="Verifier.html"><i class="fa-solid fa-circle-check"></i>Verifier</a></button>
     </div> ---->
 </div>
     <script>
-        const loginBtn = document.querySelector('.btn');
+       const loginBtn = document.getElementById('loginBtn');
+const loginResult = document.getElementById('loginResult');
 
-        loginBtn.addEventListener('click', function() {
-              // Display success message
+loginBtn.addEventListener('click', function() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    if (username === 'i' && password === 'p') {
+        // Display success message
         loginResult.textContent = 'Login Successful';
         loginResult.style.color = 'green';
-            window.location.href = 'dashboard.html';
-        });
+        // Redirect to link.html on successful login
+        window.location.href = 'piechart.html';
+    } else {
+        // Display error message
+        loginResult.textContent = 'Invalid credentials. Please try again.';
+        loginResult.style.color = 'red';
+    }
+});
+localStorage.setItem('formData', JSON.stringify(formData));
+
+
+
+
+console.log('Form submitted and data stored:', formData);
+
 
         
     </script>
 </body>
 </html>
-
