@@ -1,77 +1,53 @@
-// document.getElementById('fileInput').value='C:\Users\jeetd\OneDrive\Documents\GitHub\SIH_2023_Grand_Finale\Jeet-\app\login\prices.csv'
-// document.getElementById('fileInput').dispatchEvent(new Event('change'));
-document.getElementById('fileInput').addEventListener('change', handleFileSelect);
-// let arrays=[];
-// const file1 = "prices.csv";
-function handleFileSelect(event) {
-    const file = event.target.files[0];
 
-    if (!file) {
-        return;
+let r = []
+//         tutorial link : https://www.youtube.com/watch?v=gnqHNJNc_0A
+onload = fetch("jobs.csv").then(res => {
+    return res.text()
+}).then(data => {
+    let s = data.split("\n");
+    // let r=s.split(",");
+    console.log(s);
+    // console.log(r);
+    // return s;
+    for (let i = 1; i + 1 < s.length; i++) {
+        s[i].split("\r");
+        // console.log(s[i]);
+        r.push(s[i].split(","));
+        // r[i-1][2].split("\r");
     }
+    // console.log(r);
+    let genr = genderratio(r);
+    piechartgen(genr);
 
-    const reader = new FileReader();
+});
 
-    reader.onload = function (e) {
-        const csvContent = e.target.result;
-        rowsAsArrays = processCSV(csvContent);
-        // displayArrays(rowsAsArrays);
-        const gr = genderratio(rowsAsArrays);
-        // console.log(gr);
-        piechartgen(gr);
-    };
-
-    reader.readAsText(file);
-    // return gr;
-}
-handleFileSelect(file1);
-function processCSV(csvContent) {
-    const rows = csvContent.split('\n');
-    const arrays = [];
-
-    rows.forEach(row => {
-        const columns = row.split(',');
-        arrays.push(columns);
-    });
-
-    return arrays;
-}
-
-// function displayArrays(arrays) {
-//   const outputDiv = document.getElementById('output');
-//   outputDiv.textContent = '';
-
-//   arrays.forEach((row, rowIndex) => {
-//     const rowDiv = document.createElement('div');
-//     rowDiv.textContent = row;
-//     outputDiv.appendChild(rowDiv);
-//   });
-// }
 function genderratio(arrays) {
     let m = 0;
     let f = 0;
+    let s = 0;
     arrays.forEach((row, i) => {
-        if (arrays[i][2] == "m") {
+        if (arrays[i][9] == "Part-Time") {
             m += 1;
         }
-        if (arrays[i][2] == "f") {
+        if (arrays[i][9] == "Full-Time/Part-Time") {
             f += 1;
         }
+        if (arrays[i][9] == "Seasonal/Temp") {
+            s += 1;
+        }
+
     })
-    console.log(m, f);
-    return [m, f];
+    console.log(m, f, s);
+    // console.log(i);
+    return [m, f,s];
 }
-
-
-// let grr=handleFileSelect();
-
-// console.log(arrays);
 function piechartgen(gen) {
-    var xValues = ['m', 'f'];
+    var xValues = ['Part-time', 'Full-Time','Seasonal/Temp'];
     var yValues = gen;
     var barColors = [
         "#b91d47",
-        "#00aba9"
+        "#00aba9",
+        "#2b5797"
     ];
 
     new Chart("myChart", {
@@ -86,63 +62,21 @@ function piechartgen(gen) {
         options: {
             title: {
                 display: true,
-                text: "World Wide Wine Production 2018"
+                text: "Gender Ratio"
             }
         }
     });
 }
+// result.forEach(e => {
+//     let m = e.map(e => {
+//         return e;
+//     })
+//     // let ce = document.createElement("tr");
+//     // ce.innerHTML = m;
+//     // if (ce.innerText != "") {
+//     //     document.querySelector("table").appendChild(ce);
+//     // }
+//     // console.log(e);
 
-//shailesh-added
-
-var data1 = {
-    labels: ['Label A', 'Label B', 'Label C'],
-    datasets: [{
-      data: [30, 40, 30],
-      backgroundColor: ['#ff6384', '#36a2eb', '#ffce56']
-    }]
-  };
-
-  var data2 = {
-    labels: ['Label X', 'Label Y', 'Label Z'],
-    datasets: [{
-      data: [45, 25, 30],
-      backgroundColor: ['#ff6384', '#36a2eb', '#ffce56']
-    }]
-  };
-
-  var data3 = {
-    labels: ['Label P', 'Label Q', 'Label R'],
-    datasets: [{
-      data: [20, 50, 30],
-      backgroundColor: ['#ff6384', '#36a2eb', '#ffce56']
-    }]
-  };
-
-  var data4 = {
-    labels: ['Label M', 'Label N', 'Label O'],
-    datasets: [{
-      data: [15, 60, 25],
-      backgroundColor: ['#ff6384', '#36a2eb', '#ffce56']
-    }]
-  };
-
-  // Create the pie charts
-  new Chart(document.getElementById('chart1'), {
-    type: 'pie',
-    data: data1
-  });
-
-  new Chart(document.getElementById('chart2'), {
-    type: 'pie',
-    data: data2
-  });
-
-  new Chart(document.getElementById('chart3'), {
-    type: 'pie',
-    data: data3
-  });
-
-  new Chart(document.getElementById('chart4'), {
-    type: 'pie',
-    data: data4
-  });
+// console.log(e);
+// })
