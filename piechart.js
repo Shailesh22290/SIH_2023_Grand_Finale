@@ -25,10 +25,10 @@ function genderratio(arrays) {
     let m = 0;
     let f = 0;
     arrays.forEach((row, i) => {
-        if (arrays[i][2] == "m\r") {
+        if (arrays[i][2] == "m") {
             m += 1;
         }
-        if (arrays[i][2] == "f\r") {
+        if (arrays[i][2] == "f") {
             f += 1;
         }
     })
