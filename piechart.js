@@ -26,13 +26,13 @@ function genderratio(arrays) {
     let f = 0;
     let s = 0;
     arrays.forEach((row, i) => {
-        if (arrays[i][9] == "Part-Time") {
+        if (arrays[i][9] == "m\r") {
             m += 1;
         }
-        if (arrays[i][9] == "Full-Time/Part-Time") {
+        if (arrays[i][9] == "f\r") {
             f += 1;
         }
-        if (arrays[i][9] == "Seasonal/Temp") {
+        if (arrays[i][9] == "t\r") {
             s += 1;
         }
 
@@ -42,7 +42,7 @@ function genderratio(arrays) {
     return [m, f,s];
 }
 function piechartgen(gen) {
-    var xValues = ['Part-time', 'Full-Time','Seasonal/Temp'];
+    var xValues = ['Male', 'Female','Others'];
     var yValues = gen;
     var barColors = [
         "#b91d47",
